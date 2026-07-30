@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  cryptography-app:
+    image: cryptography:latest
+    container_name: cryptography_container
+    ports:
+      - "8080:5000"  # तुमच्या होस्टचे 8080 पोर्ट आणि कंटेनरचे 5000 पोर्ट मॅप केले आहेत
+    restart: unless-stopped

@@ -1,0 +1,49 @@
+pipeline {
+    agent { label "shivp" }
+
+    stages {
+        stage('Code') {
+            steps {
+                echo "This is cloning the code!"
+                git url: "https://github.com/Shivprasad-Suryakar/Cryptography-with-python.git", branch: "main"
+                echo "Github Code Clone Successfully!"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "This is building the code!"
+                sh "whoami"
+                sh "docker build -t cryptography:latest ."
+            }
+        }
+
+        stage('Push to the Docker Hub') {
+            steps {
+                echo "This is the Pushing image of the docker hub!"
+                withCredentials([usernamePassword(
+                    credentialsId:"dockerHubCred",
+                    usernameVariable:"dockerHubUser", 
+                    passwordVariable:"dockerHubPass")]) {
+                    
+                    // लॉगिन करताना डायरेक्ट व्हेरिएबल वापरा
+                    sh "docker login -u ${dockerHubUser} -p ${dockerHubPass}"
+                    
+                    // इमेज टॅग करताना ${dockerHubUser} चा वापर करा
+                    sh "docker image tag cryptography:latest ${dockerHubUser}/cryptography-with-python:latest"
+                    
+                    // इमेज पुश करताना ${dockerHubUser} चा वापर करा
+                    sh "docker push ${dockerHubUser}/cryptography-with-python:latest"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "This is deploying the code!"
+                // जुना कंटेनर आधी असेल तर तो रिमूव्ह करणे चांगले, पण सध्या तुमची मूळ कमांड:
+                sh "docker run -d -p 8080:5000 cryptography:latest"
+            }
+        }
+    }
+}

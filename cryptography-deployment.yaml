@@ -1,0 +1,37 @@
+# cryptography-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptography-deployment
+  labels:
+    app: cryptography
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cryptography
+  template:
+    metadata:
+      labels:
+        app: cryptography
+    spec:
+      containers:
+      - name: cryptography-container
+        image: cryptography:latest  # तुमच्या इमेजचे नाव
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Never # जर इमेज स्थानिक मशीनवर (local machine) असेल तर
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryptography-service
+spec:
+  type: NodePort
+  selector:
+    app: cryptography
+  ports:
+    - protocol: TCP
+      port: 80         # क्लस्टरच्या बाहेरून कोणत्या पोर्टवर ॲक्सेस करायचे
+      targetPort: 5000 # कंटेनरचे अंतर्गत पोर्ट
+      nodePort: 30007  # NodePort रेंज (30000-32767)

@@ -17,8 +17,10 @@
 ## 📦 इन्स्टॉलेशन
 १. रिपॉझिटरी क्लोन करा:
    `git clone https://github.com/Shivprasad-Suryakar/Cryptography-with-python.git`
+
 २. आवश्यक लायब्ररीज इन्स्टॉल करा:
    `pip install flask cryptography pycryptodome`
+
 ३. ॲप रन करा:
    `python main.py`
 

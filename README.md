@@ -36,7 +36,7 @@ Your project is a Web-Based Cryptographic Security Console built with Python and
 2. File Organization
 Here is the structure of your project to keep your workflow organized:
 
-Frontend (Views):
+**Frontend (Views):**
 
 dashboard_view.py: The main landing page with cards.
 
@@ -48,7 +48,8 @@ audit_view.py: Displays system logs in a table format.
 
 theme_styles.py: Contains the global CSS for a unified dark, "cyber" look.
 
-Backend (Engine):
+
+**Backend (Engine):**
 
 main.py: The Flask server that handles URL routing.
 
@@ -60,7 +61,9 @@ logger.py: Manages the audit_history.log file.
 
 validator.py: Ensures key strength and input integrity.
 
-3. Technologies Used
+
+**3. Technologies Used**
+
 Flask: Web framework for the server.
 
 Cryptography & PyCryptodome: Core libraries for AES, DES, Blowfish, Fernet, etc.

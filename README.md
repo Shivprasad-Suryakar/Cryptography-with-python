@@ -1,4 +1,6 @@
-I Deploy this Project through ECR Elastic Container Registry and ECS Elastic Container Service 
+I Deploy this Project through ECR (Elastic Container Registry) and (ECS Elastic Container Service) 
+
+
 Linked In Link : https://lnkd.in/p/dF54GG6q
 
 

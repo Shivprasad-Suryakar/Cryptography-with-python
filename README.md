@@ -78,4 +78,3 @@ Hashlib: For Hashing algorithms (MD5, SHA-256, etc.).
 
 Standard Python Modules: secrets (for random salts), math (for brute-force timing), and os (for file handling).
 
-https://lnkd.in/p/dF54GG6q

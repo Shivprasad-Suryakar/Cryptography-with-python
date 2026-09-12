@@ -78,3 +78,9 @@ Hashlib: For Hashing algorithms (MD5, SHA-256, etc.).
 
 Standard Python Modules: secrets (for random salts), math (for brute-force timing), and os (for file handling).
 
+
+With Docker : 
+        docker pull prasad1212/cryptographywithpython
+        docker run -d --name imagename -p 5000:5000  prasad1212/cryptographywithpython
+        docker ps 
+        docker images 
